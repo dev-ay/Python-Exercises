@@ -1,4 +1,4 @@
-#!C:\Users\Student\Desktop\TechAcademy\8b-Python\Training\venv\Scripts\python.exe
+#!C:\Users\Student\Desktop\GitHub\Python-Exercises\Training\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3.6'
 __requires__ = 'pip==19.0.3'
 import re
