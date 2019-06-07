@@ -1,72 +1,121 @@
+import tkinter
+from tkinter import *
 
-#page 104
-# parent class
-class Organism:
-    name = "Unknown"
-    species = "Unknown"
-    legs = None
-    arms = None
-    dna = "Sequence A"
-    origin = "Unknown"
-    carbon_based = True
+#Page 106
+class ParentWindow(Frame):
+    def __init__(self, master):
+        Frame.__init__(self)
 
-    def information(self):
-        msg = f"\nName: {self.name}\nSpecies: {self.species}\nLegs: {self.legs}\
-                \nArms: {self.arms}\nDNA: {self.dna}\nOrigin: {self.origin}\
-                \nCarbon_Based: {self.carbon_based}"
-        return msg
+        self.master = master
+        self.master.resizable(width=False, height=False)
+        self.master.geometry(f'{700}x{400}')
+        self.master.title('Learning Tkinter')
+        self.master.config(bg='#eee')
 
-# child class instance
-class Human(Organism):
-    name = 'MacGuyver'
-    species = "Homosapien"
-    legs = 2
-    arms = 2
-    origin = 'Earth'
+        self.varFName = StringVar()
+        self.varLName = StringVar()
 
-    def ingenuity(self):
-        msg = "\nCreates a deadly weapon using only a paper clip, chewing gum, and a roll of duct tape!"
-        return msg
+        self.lblFName = Label(self.master, text='First Name: ', font=('Helvetica', 16), fg='black', bg='#eee')
+        self.lblFName.grid(row=0,column=0, padx=(30,0), pady=(30,0))
+        self.lblLName = Label(self.master, text='Last Name: ', font=('Helvetica', 16), fg='black', bg='#eee')
+        self.lblLName.grid(row=1,column=0, padx=(30,0), pady=(30,0))
 
-# another child class instance
-class Dog(Organism):
-    name = "Spot"
-    species = "Canine"
-    legs = 4
-    arms = 0
-    dna = "Sequence B"
-    origin = "Earth"
+        self.lblDisplay = Label(self.master, text='', font=('Helvetica', 16), fg='black', bg='#eee')
+        self.lblDisplay.grid(row=3,column=1, padx=(30,0), pady=(30,0))
 
-    def bite(self):
-        msg = "\nEmits a loud, menacing growl and bites down ferociously on it's target!"
-        return msg
+        self.txtFName = Entry(self.master, text=self.varFName, font=('Helvetica', 16), fg='black', bg='#fff')
+        self.txtFName.grid(row=0,column=1, padx=(30,0), pady=(30,0))
+        self.txtLName = Entry(self.master, text=self.varLName, font=('Helvetica', 16), fg='black', bg='#fff')
+        self.txtLName.grid(row=1,column=1, padx=(30,0), pady=(30,0))
 
-# another child class instance
-class Bacterium(Organism):
-    name = 'X'
-    species = 'Bacteria'
-    legs = 0
-    arms = 0
-    dna = "Sequence C"
-    origin = 'Mars'
+        self.btnSubmit = Button(self.master, text='Submit', width=10, height=2, command=self.submit)
+        self.btnSubmit.grid(row=2,column=1, padx=(0,0), pady=(30,0), sticky=NE)
 
-    def replication(self):
-        msg = "\nThe cells begin to divide and multiply into two separate organism!"
-        return msg
+        self.btnCancel = Button(self.master, text='Cancel', width=10, height=2, comman=self.cancel)
+        self.btnCancel.grid(row=2,column=1, padx=(0,90), pady=(30,0), sticky=NE)
 
+    def submit(self):
+        fn = self.varFName.get()
+        ln = self.varLName.get()
+        self.lblDisplay.config(text=f"Hello {fn} {ln}!")
+
+
+    def cancel(self):
+        self.master.destroy()
 
 if __name__ == "__main__":
-    human = Human()
-    print(human.information())
-    print(human.ingenuity())
+    root = Tk()
+    App = ParentWindow(root)
+    root.mainloop()
 
-    dog = Dog()
-    print(dog.information())
-    print(dog.bite())
-
-    bacteria = Bacterium()
-    print(bacteria.information())
-    print(bacteria.replication())
+# #page 104
+# # parent class
+# class Organism:
+#     name = "Unknown"
+#     species = "Unknown"
+#     legs = None
+#     arms = None
+#     dna = "Sequence A"
+#     origin = "Unknown"
+#     carbon_based = True
+#
+#     def information(self):
+#         msg = f"\nName: {self.name}\nSpecies: {self.species}\nLegs: {self.legs}\
+#                 \nArms: {self.arms}\nDNA: {self.dna}\nOrigin: {self.origin}\
+#                 \nCarbon_Based: {self.carbon_based}"
+#         return msg
+#
+# # child class instance
+# class Human(Organism):
+#     name = 'MacGuyver'
+#     species = "Homosapien"
+#     legs = 2
+#     arms = 2
+#     origin = 'Earth'
+#
+#     def ingenuity(self):
+#         msg = "\nCreates a deadly weapon using only a paper clip, chewing gum, and a roll of duct tape!"
+#         return msg
+#
+# # another child class instance
+# class Dog(Organism):
+#     name = "Spot"
+#     species = "Canine"
+#     legs = 4
+#     arms = 0
+#     dna = "Sequence B"
+#     origin = "Earth"
+#
+#     def bite(self):
+#         msg = "\nEmits a loud, menacing growl and bites down ferociously on it's target!"
+#         return msg
+#
+# # another child class instance
+# class Bacterium(Organism):
+#     name = 'X'
+#     species = 'Bacteria'
+#     legs = 0
+#     arms = 0
+#     dna = "Sequence C"
+#     origin = 'Mars'
+#
+#     def replication(self):
+#         msg = "\nThe cells begin to divide and multiply into two separate organism!"
+#         return msg
+#
+#
+# if __name__ == "__main__":
+#     human = Human()
+#     print(human.information())
+#     print(human.ingenuity())
+#
+#     dog = Dog()
+#     print(dog.information())
+#     print(dog.bite())
+#
+#     bacteria = Bacterium()
+#     print(bacteria.information())
+#     print(bacteria.replication())
 
 
 
