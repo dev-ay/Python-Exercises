@@ -1,7 +1,11 @@
+
+
+
+
 import tkinter
 from tkinter import *
 
-#Page 106
+#Page 107~111
 class ParentWindow(Frame):
     def __init__(self, master):
         Frame.__init__(self)
@@ -47,6 +51,9 @@ if __name__ == "__main__":
     root = Tk()
     App = ParentWindow(root)
     root.mainloop()
+
+
+
 
 # #page 104
 # # parent class
